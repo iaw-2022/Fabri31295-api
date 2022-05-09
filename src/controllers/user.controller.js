@@ -1,6 +1,5 @@
 const database = require('../database');
 
-
 const getUsers = async(req, res) => {
     const response = await database.query('SELECT * FROM users');
     res.status(200).json(response.rows);
