@@ -1,15 +1,19 @@
+require('dotenv').config({ path: "src/.env" })
 const express = require('express');
 const cors = require('cors');
-
+const bodyParser = require('body-parser');
 const app = express();
+const usersRoutes = require('./routes/users');
 
-// middlewares
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // routes
-app.use(require('./routes/index'));
+app.use(require('./routes.js'))
 
-app.listen(2020, () => {
-    console.log('server is listening on port 2020');
-});
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+})
