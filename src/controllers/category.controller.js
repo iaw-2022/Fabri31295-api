@@ -6,8 +6,8 @@ const getCategories = async(req, res) => {
 };
 
 const getCategoryByName = async (req, res) => {
-    const id = parseInt(req.params.id);
-    const response = await database.query('SELECT * FROM categories WHERE name = $1', [id]);
+    const name = req.params.name;
+    const response = await database.query('SELECT * FROM categories WHERE name = $1', [name]);
     res.json(response.rows);
 };
 

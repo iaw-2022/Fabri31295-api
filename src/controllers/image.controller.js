@@ -6,32 +6,32 @@ const getImages = async(req, res) => {
 };
 
 const getImageByName = async (req, res) => {
-    const id = parseInt(req.params.id);
-    const response = await database.query('SELECT * FROM images WHERE name = $1', [id]);
+    const name = req.params.name;
+    const response = await database.query('SELECT * FROM images WHERE name = $1', [name]);
     res.json(response.rows);
 };
 
 const getImageByDate = async (req, res) => {
-    const id = parseInt(req.params.id);
-    const response = await database.query('SELECT * FROM images WHERE date = $1', [id]);
+    const date = req.params.date;
+    const response = await database.query('SELECT * FROM images WHERE date = $1', [date]);
     res.json(response.rows);
 };
 
 const getImageByPrice = async (req, res) => {
-    const id = parseInt(req.params.id);
-    const response = await database.query('SELECT * FROM images WHERE price = $1', [id]);
+    const price = parseInt(req.params.price);
+    const response = await database.query('SELECT * FROM images WHERE price = $1', [price]);
     res.json(response.rows);
 };
 
 const getImageByCategory = async (req, res) => {
-    const id = parseInt(req.params.id);
-    const response = await database.query('SELECT * FROM images WHERE category = $1', [id]);
+    const category = req.params.category;
+    const response = await database.query('SELECT * FROM images WHERE category = $1', [category]);
     res.json(response.rows);
 };
 
 const getImageByResolution = async (req, res) => {
-    const id = parseInt(req.params.id);
-    const response = await database.query('SELECT * FROM images WHERE resolution = $1', [id]);
+    const resolution = req.params.resolution;
+    const response = await database.query('SELECT * FROM images WHERE resolution = $1', [resolution]);
     res.json(response.rows);
 };
 
