@@ -13,8 +13,6 @@ const { getImages, getImageByName, getImageByDate, getImageByPrice, getImageByCa
  *     responses:
  *       '200':
  *         description: Sucessful response
- *       '400':
- *         description: Invalid parameter
  *       '404':
  *         description: Not found
  */
@@ -55,7 +53,8 @@ router.get('/images/:name', getImageByName);
  *       - in: path
  *         name: date
  *         schema:
- *           type: date
+ *           type: string
+ *           example: "2022-02-01"
  *         required: true
  *         description: creation date of image
  *     responses:

@@ -13,8 +13,6 @@ const { getCategories, getCategoryByName } = require('../controllers/category.co
  *     responses:
  *       '200':
  *         description: Sucessful response
- *       '400':
- *         description: Invalid parameter
  *       '404':
  *         description: Not found
  */

@@ -13,8 +13,6 @@ const { getResolutions, getResolutionByName, getResolutionByAspectRatio } = requ
  *     responses:
  *       '200':
  *         description: Sucessful response
- *       '400':
- *         description: Invalid parameter
  *       '404':
  *         description: Not found
  */
