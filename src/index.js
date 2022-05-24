@@ -1,12 +1,14 @@
 require('dotenv').config({ path: "src/.env" })
 const swagger = require('../swagger');
-const bodyParser = require('body-parser');
-const express = require('express');
-const app = express();
+const cors = require('cors');
 
-app.use(express.json());
-app.use(bodyParser.json());
+const express = require('express'),
+      bodyParser = require('body-parser'),
+      app = express();
+
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(cors());
 
 app.use(
     '/api-docs',

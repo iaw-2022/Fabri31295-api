@@ -45,7 +45,7 @@ const getImageByDate = async (req, res) => {
 const getImageByPrice = async (req, res) => {
     const price = parseInt(req.params.price);
 
-    if(typeof(price) == 'string') {
+    if(!isNaN(req.params.price)) {
         const response = await database.query('SELECT * FROM images WHERE price = $1', [price]);
 
         if(response.rows.length > 0){
