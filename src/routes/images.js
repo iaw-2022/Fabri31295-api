@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 
-const { getImages, getImageByName, getImageByDate, getImageByPrice, getImageByCategory, getImageByResolution } = require('../controllers/image.controller');
+const { getImages, getImageByID, getImageByName, getImageByDate, getImageByPrice, getImageByCategory, getImageByResolution } = require('../controllers/image.controller');
 
 /**
  * @swagger
@@ -41,6 +41,30 @@ router.get('/images', getImages);
  *         description: Not found
  */
 router.get('/images/:name', getImageByName);
+
+/**
+ * @swagger
+ * /images/id/{id}:
+ *   get:
+ *     description: Use to request a image.
+ *     tags: 
+ *       - Images
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: ID of the image
+ *     responses:
+ *       '200':
+ *         description: Sucessful response
+ *       '400':
+ *         description: Invalid parameter
+ *       '404':
+ *         description: Not found
+ */
+ router.get('/images/id/:id', getImageByID);
 
 /**
  * @swagger
@@ -127,6 +151,7 @@ router.get('/images/category/:category', getImageByCategory);
  *         name: resolution
  *         schema:
  *           type: string
+ *           example: "1920x1080"
  *         required: true
  *         description: resolution of image
  *     responses:

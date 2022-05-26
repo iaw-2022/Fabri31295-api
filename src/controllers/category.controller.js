@@ -13,7 +13,7 @@ const getCategories = async(req, res) => {
 const getCategoryByName = async (req, res) => {
     const name = req.params.name;
 
-    if(name) {
+    if(typeof name === 'string') {
         const response = await database.query('SELECT * FROM categories WHERE name = $1', [name]);
 
         if(response.rows.length > 0){

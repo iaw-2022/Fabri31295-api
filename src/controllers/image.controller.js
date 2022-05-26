@@ -10,10 +10,26 @@ const getImages = async(req, res) => {
     }
 };
 
+const getImageByID = async (req, res) => {
+    const id = req.params.id;
+    
+    if(!isNaN(id)) {
+        const response = await database.query('SELECT * FROM images WHERE id = $1', [id]);
+
+        if(response.rows.length > 0){
+            res.status(200).json(response.rows);
+        }else{
+            res.status(404).json({error: 'Not found'});
+        }
+    } else {
+        res.status(400).json({error: 'Invalid parameter'});
+    }
+};
+
 const getImageByName = async (req, res) => {
     const name = req.params.name;
     
-    if(typeof(name) == 'string') {
+    if(typeof name === 'string') {
         const response = await database.query('SELECT * FROM images WHERE name = $1', [name]);
 
         if(response.rows.length > 0){
@@ -29,7 +45,7 @@ const getImageByName = async (req, res) => {
 const getImageByDate = async (req, res) => {
     const date = req.params.date;
     
-    if(typeof(date) == 'string') {
+    if(typeof date === 'string') {
         const response = await database.query('SELECT * FROM images WHERE date = $1', [date]);
 
         if(response.rows.length > 0){
@@ -61,7 +77,7 @@ const getImageByPrice = async (req, res) => {
 const getImageByCategory = async (req, res) => {
     const category = req.params.category;
     
-    if(typeof(category) == 'string') {
+    if(typeof category  === 'string') {
         const response = await database.query('SELECT * FROM images WHERE category = $1', [category]);
 
         if(response.rows.length > 0){
@@ -77,7 +93,7 @@ const getImageByCategory = async (req, res) => {
 const getImageByResolution = async (req, res) => {
     const resolution = req.params.resolution;
     
-    if(typeof(resolution) == 'string') {
+    if(typeof resolution === 'string') {
         const response = await database.query('SELECT * FROM images WHERE resolution = $1', [resolution]);
 
         if(response.rows.length > 0){
@@ -92,6 +108,7 @@ const getImageByResolution = async (req, res) => {
 
 module.exports = {
     getImages,
+    getImageByID,
     getImageByName, 
     getImageByDate, 
     getImageByPrice,

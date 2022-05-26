@@ -30,6 +30,7 @@ router.get('/resolutions', getResolutions);
  *         name: name
  *         schema:
  *           type: string
+ *           example: "1920x1080"
  *         required: true
  *         description: name of resolution
  *     responses:
@@ -54,6 +55,7 @@ router.get('/resolutions/:name', getResolutionByName);
  *         name: aspect_ratio
  *         schema:
  *           type: string
+ *           example: "5:3"
  *         required: true
  *         description: aspect ratio of resolution
  *     responses:
