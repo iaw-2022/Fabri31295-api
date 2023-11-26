@@ -3,4 +3,4 @@ const router = Router();
 
 const { autenticar } = require('../controllers/authenticate.controller');
 
- router.post('/autenticar', autenticar);
+router.post('/autenticar', autenticar);

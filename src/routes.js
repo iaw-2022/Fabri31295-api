@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const image = require('./controllers/image.controller.js');
 const category = require('./controllers/category.controller.js');
 const resolution = require('./controllers/resolution.controller.js');
+const token = require('./controllers/token.controller.js');
 //const authenticate = require('./controllers/authenticate.controller.js');
 
 router.use(bodyParser.json());
@@ -35,5 +36,7 @@ router.get('/resolutions/aspect_ratio/:aspect_ratio', resolution.getResolutionBy
 
 // Rutas de autenticacion
 //router.post('/autenticar', authenticate.autenticar);
+
+router.post('/addToken', token.postToken);
 
 module.exports = router;
